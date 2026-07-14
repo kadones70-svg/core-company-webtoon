@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Company — 웹툰</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=Noto+Sans+KR:wght@700;800;900&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 10px 80px;
+  gap: 4px;
+}
+
+/* ===== 웹툰 컷 ===== */
+.cut {
+  max-width: 500px; width: 100%;
+  background: #1A1A1A;
+  position: relative;
+  overflow: hidden;
+}
+.cut img {
+  width: 100%; display: block;
+}
+
+/* ===== 말풍선 ===== */
+.speech {
+  position: absolute;
+  background: #fff;
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px; font-weight: 800;
+  line-height: 1.4;
+  max-width: 75%;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+.speech::after {
+  content: '';
+  position: absolute; bottom: -12px; left: 24px;
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 14px solid #fff;
+}
+.speech.right { right: 16px; }
+.speech.right::after { left: auto; right: 24px; }
+.speech.orange { background: #E8620A; color: #fff; }
+.speech.orange::after { border-top-color: #E8620A; }
+
+/* ===== 박스 (내레이션/데이터) ===== */
+.narration {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 15px; font-weight: 700;
+  line-height: 1.6;
+  border-left: 4px solid #E8620A;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ===== 데이터 폭탄 ===== */
+.data-bomb {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  border: 3px solid #E8620A;
+  color: #E8620A;
+  padding: 20px 28px;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(232,98,10,0.4);
+}
+.data-bomb .big {
+  font-size: 42px; font-weight: 700; display: block;
+}
+.data-bomb .sub {
+  font-size: 13px; color: #ff9966; display: block; margin-top: 4px;
+}
+
+/* ===== 타이틀 컷 ===== */
+.title-cut {
+  text-align: center; padding: 60px 30px 40px;
+  background: linear-gradient(180deg, #1A1A1A 0%, #0d0d0d 100%);
+}
+.title-cut h1 {
+  font-size: 36px; font-weight: 900; color: #fff; line-height: 1.3;
+}
+.title-cut h1 span { color: #E8620A; }
+.title-cut .subtitle {
+  font-size: 14px; color: #888; margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ===== CTA 컷 ===== */
+.cta-cut {
+  text-align: center; padding: 50px 30px;
+  background: #1A1A1A;
+  border: 2px solid #E8620A33;
+  border-radius: 12px;
+}
+.cta-cut h2 { font-size: 24px; color: #fff; margin-bottom: 8px; }
+.cta-cut h2 span { color: #E8620A; }
+.cta-cut .btn {
+  display: inline-block;
+  background: #E8620A; color: #fff;
+  font-size: 18px; font-weight: 800;
+  padding: 16px 36px; border-radius: 10px;
+  text-decoration: none; margin-top: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ===== 진행 바 ===== */
+.progress {
+  width: 100%; max-width: 500px;
+  display: flex; justify-content: center; gap: 6px;
+  padding: 16px 0;
+}
+.progress span {
+  width: 24px; height: 4px; border-radius: 2px;
+  background: #333;
+}
+.progress span.active { background: #E8620A; }
+
+.img-credit {
+  font-size: 9px; color: #444; text-align: right;
+  padding: 2px 8px; font-family: 'DM Mono', monospace;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 타이틀 컷 ===== -->
+<div class="cut title-cut">
+  <h1>클라우드 AI에<br><span>월급</span>을 갖다 바친<br>한 남자의 이야기</h1>
+  <div class="subtitle">실화 기반 · Core Company 제작</div>
+</div>
+
+<div class="progress"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+
+<!-- ===== EP1: 토큰 쇼크 ===== -->
+<div class="cut">
+  <img src="storybook_images/story1_token_shock.png" alt="토큰 쇼크">
+  <div class="img-credit">Boogu-Image</div>
+</div>
+
+<div class="cut" style="background:#1A1A1A; padding:40px 24px;">
+  <div class="speech" style="position:static; max-width:100%;">📱 "중국 앱 좀 깔아볼까?"</div>
+  <div style="height:16px"></div>
+  <p style="color:#ccc; font-size:14px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+    2026년 7월 13일 밤.<br>
+    ADB로 핸드폰을 연결하고<br>
+    ChatGPT에게 물었습니다.
+  </p>
+  <div style="height:20px"></div>
+  <div class="data-bomb" style="position:static; transform:none;">
+    <span class="big">$62.10</span>
+    <span class="sub">30분 · 741,656 토큰 · 자동충전 3회</span>
+  </div>
+  <div style="height:16px"></div>
+  <div class="speech orange" style="position:static; max-width:100%;">💸 "85,700원이 30분 만에!!"</div>
+</div>
+
+<div class="progress"><span class="active"></span><span class="active"></span><span></span><span></span><span></span></div>
+
+<!-- ===== EP2: 실제 비용 ===== -->
+<div class="cut">
+  <img src="storybook_images/story2_real_cost.png" alt="실제 비용">
+  <div class="img-credit">Boogu-Image</div>
+</div>
+
+<div class="cut" style="background:#1A1A1A; padding:40px 24px;">
+  <div class="speech" style="position:static; max-width:100%;">🏢 "이걸... 회사에서 쓰면?"</div>
+  <div style="height:20px"></div>
+  <div class="data-bomb" style="position:static; transform:none;">
+    <span class="big">월 ₩850만</span>
+    <span class="sub">5인 사무실 · GPT-5.6 기준</span>
+  </div>
+  <div style="height:12px"></div>
+  <div class="data-bomb" style="position:static; transform:none; border-color:#ff4444; color:#ff4444; box-shadow:0 0 40px rgba(255,68,68,0.3);">
+    <span class="big" style="color:#ff4444;">3년 ₩6억</span>
+    <span class="sub" style="color:#ff8888;">Claude Fable 5 기준 · GPT의 2배</span>
+  </div>
+  <div style="height:16px"></div>
+  <p style="color:#E8620A; font-size:14px; font-weight:700; text-align:center;">
+    모델이 좋아질수록 과금은 오른다. 내려가지 않는다.
+  </p>
+</div>
+
+<div class="progress"><span class="active"></span><span class="active"></span><span class="active"></span><span></span><span></span></div>
+
+<!-- ===== EP3: 해결책 ===== -->
+<div class="cut">
+  <img src="storybook_images/story3_solution.png" alt="해결책">
+  <div class="img-credit">Boogu-Image</div>
+</div>
+
+<div class="cut" style="background:#1A1A1A; padding:40px 24px;">
+  <div class="speech orange" style="position:static; max-width:100%;">💡 "토큰 비용 0원이 가능하다고?"</div>
+  <div style="height:20px"></div>
+  <p style="color:#ccc; font-size:14px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+    네. AI 서버를 <strong style="color:#E8620A;">사무실 안</strong>에 두는 것.<br>
+    그게 전부입니다.
+  </p>
+  <div style="height:16px"></div>
+  <div class="data-bomb" style="position:static; transform:none; border-color:#44cc44; box-shadow:0 0 40px rgba(68,204,68,0.3);">
+    <span class="big" style="color:#44cc44;">₩505만</span>
+    <span class="sub" style="color:#88dd88;">초기 구축 · NAS+HDD+GPU+UPS</span>
+  </div>
+  <div style="height:8px"></div>
+  <p style="color:#44cc44; font-size:12px; text-align:center; font-family:'DM Mono',monospace;">
+    그다음부터 월 전기세 3만원 + 유지보수
+  </p>
+</div>
+
+<div class="progress"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span></span></div>
+
+<!-- ===== EP4: AGI 미래 ===== -->
+<div class="cut">
+  <img src="storybook_images/story4_agi_future.png" alt="AGI 미래">
+  <div class="img-credit">Boogu-Image</div>
+</div>
+
+<div class="cut" style="background:#1A1A1A; padding:40px 24px;">
+  <div class="speech" style="position:static; max-width:100%;">🔮 "2028년이면 AI가 AI를 설계한다"</div>
+  <div style="height:16px"></div>
+  <p style="color:#ccc; font-size:13px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+    OpenAI 목표: <strong style="color:#E8620A;">2028년 3월</strong> 자동화된 AI 연구원<br>
+    Anthropic 전망: <strong style="color:#E8620A;">2028년 말</strong> RSI 확률 <strong style="color:#E8620A;">60%</strong>
+  </p>
+  <div style="height:16px"></div>
+  <div style="background:rgba(232,98,10,0.1); border:1px solid #E8620A44; border-radius:8px; padding:14px;">
+    <p style="color:#E8620A; font-size:15px; font-weight:800; text-align:center;">
+      "API 키 하나로 누구나 쓸 수 있는 AI는<br>경쟁 우위가 될 수 없다"
+    </p>
+  </div>
+  <div style="height:8px"></div>
+  <p style="color:#fff; font-size:14px; font-weight:700; text-align:center;">
+    지금 <span style="color:#E8620A;">자체 LLM</span>을 구축하는 기업만이<br>2년 후에도 살아남습니다
+  </p>
+</div>
+
+<div class="progress"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span></div>
+
+<!-- ===== EP5: 데이터 주권 ===== -->
+<div class="cut">
+  <img src="storybook_images/story5_data_sovereignty.png" alt="데이터 주권">
+  <div class="img-credit">Boogu-Image</div>
+</div>
+
+<div class="cut" style="background:#1A1A1A; padding:40px 24px;">
+  <div class="speech orange" style="position:static; max-width:100%;">🏰 "내 데이터는 내 서버에"</div>
+  <div style="height:20px"></div>
+  <p style="color:#ccc; font-size:14px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+    모든 AI 연산이 <strong style="color:#E8620A;">사무실 안에서</strong>만 처리<br>
+    클라우드로 나가는 데이터: <strong style="color:#E8620A;">0바이트</strong>
+  </p>
+  <div style="height:12px"></div>
+  <div style="background:#1a2a1a; border-radius:8px; padding:14px;">
+    <p style="color:#44cc44; font-size:13px; line-height:1.8; font-family:'Noto Sans KR',sans-serif;">
+      ✅ 토큰 비용 <strong>0원</strong><br>
+      ✅ 무제한 컨텍스트<br>
+      ✅ 데이터는 당신의 서버에
+    </p>
+  </div>
+  <div style="height:12px"></div>
+  <p style="color:#888; font-size:12px; text-align:center;">
+    방산·특허·금융 등 규제 산업도 망분리 환경으로 AI 도입 가능<br>
+    정부 실증사업 활용 시 <strong style="color:#E8620A;">초기 구축비 0원</strong>
+  </p>
+</div>
+
+<!-- ===== CTA ===== -->
+<div class="cut cta-cut" style="max-width:500px; width:100%; margin-top:20px;">
+  <h2>지금 <span>무료 현장 실사</span><br>신청하세요</h2>
+  <p style="color:#999; font-size:13px;">전문 엔지니어가 3일 내 방문</p>
+  <a class="btn" href="mailto:contact@corecompany.net">📧 상담 신청하기</a>
+</div>
+
+<p style="color:#555; font-size:11px; text-align:center; padding:20px;">
+  온프레미스 AI, 공간에 심다 — Core Company<br>
+  ⚡ 실화 기반 · 2026년 7월 13일 실제 과금 사례
+</p>
+
+</body>
+</html>
